@@ -1,0 +1,172 @@
+{
+  "name": "open-html-in-browser",
+  "displayName": "Open HTML in Browser",
+  "description": "%description%",
+  "version": "0.1.0",
+  "publisher": "takumi",
+  "license": "MIT",
+  "author": {
+    "name": "Yoshiro Moriyama"
+  },
+  "engines": {
+    "vscode": "^1.144.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "html",
+    "browser",
+    "preview",
+    "open",
+    "default browser"
+  ],
+  "main": "./dist/extension.js",
+  "l10n": "./l10n",
+  "activationEvents": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": false
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "openHtmlInBrowser.open",
+        "title": "%command.open.title%",
+        "icon": "$(globe)"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "openHtmlInBrowser.open",
+          "when": "resourceExtname =~ /^\\.html?$/i"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "openHtmlInBrowser.open",
+          "when": "resourceExtname =~ /^\\.html?$/i",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "openHtmlInBrowser.open",
+          "when": "resourceExtname =~ /^\\.html?$/i",
+          "group": "navigation"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "openHtmlInBrowser.open",
+          "when": "resourceExtname =~ /^\\.html?$/i",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "openHtmlInBrowser.open",
+        "key": "alt+b",
+        "mac": "alt+b",
+        "when": "resourceExtname =~ /^\\.html?$/i && (editorTextFocus || (filesExplorerFocus && !inputFocus))"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "openHtmlInBrowser.launcher",
+        "displayName": "%customEditor.displayName%",
+        "selector": [
+          {
+            "filenamePattern": "*.html"
+          },
+          {
+            "filenamePattern": "*.htm"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "configuration": {
+      "title": "%config.title%",
+      "properties": {
+        "openHtmlInBrowser.browser": {
+          "type": "string",
+          "enum": [
+            "default",
+            "chrome",
+            "firefox",
+            "edge",
+            "safari",
+            "brave",
+            "custom"
+          ],
+          "enumDescriptions": [
+            "%config.browser.default%",
+            "%config.browser.chrome%",
+            "%config.browser.firefox%",
+            "%config.browser.edge%",
+            "%config.browser.safari%",
+            "%config.browser.brave%",
+            "%config.browser.custom%"
+          ],
+          "default": "default",
+          "scope": "machine",
+          "markdownDescription": "%config.browser.description%"
+        },
+        "openHtmlInBrowser.customBrowserPath": {
+          "type": "string",
+          "default": "",
+          "scope": "machine",
+          "markdownDescription": "%config.customBrowserPath.description%"
+        },
+        "openHtmlInBrowser.openOnDoubleClick": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%config.openOnDoubleClick.description%"
+        },
+        "openHtmlInBrowser.alsoOpenInEditor": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "%config.alsoOpenInEditor.description%"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "node esbuild.mjs --production",
+    "compile": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "build:tests": "node esbuild.mjs --tests",
+    "test:unit": "npm run build:tests && node --test \"out/test/unit/*.test.js\"",
+    "test:integration": "npm run build && npm run build:tests && vscode-test",
+    "test": "npm run test:unit && npm run test:integration",
+    "detect-browser": "npm run build:tests && node out/scripts/detect-browser.js",
+    "package": "node -e \"require('fs').mkdirSync('release',{recursive:true})\" && vsce package --no-dependencies --out release/"
+  },
+  "dependencies": {
+    "default-browser": "5.5.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/mocha": "10.0.10",
+    "@types/node": "22.20.5",
+    "@types/vscode": "1.144.0",
+    "@vscode/test-cli": "0.0.15",
+    "@vscode/test-electron": "3.1.0",
+    "@vscode/vsce": "4.1.0",
+    "esbuild": "0.28.2",
+    "eslint": "10.14.0",
+    "prettier": "3.9.10",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.72.1"
+  }
+}

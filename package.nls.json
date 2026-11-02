@@ -1,0 +1,17 @@
+{
+  "description": "Open HTML files in your default browser from the Explorer, the editor, or with a double-click. Detects the default browser on macOS, Windows, and Linux.",
+  "command.open.title": "Open in Browser",
+  "customEditor.displayName": "Open in Browser",
+  "config.title": "Open HTML in Browser",
+  "config.browser.description": "Browser used to open HTML files. `default` detects the operating system's default browser.",
+  "config.browser.default": "The operating system's default browser (detected automatically).",
+  "config.browser.chrome": "Google Chrome. On Linux, Chromium is used when Chrome is not installed.",
+  "config.browser.firefox": "Mozilla Firefox.",
+  "config.browser.edge": "Microsoft Edge.",
+  "config.browser.safari": "Safari (macOS only).",
+  "config.browser.brave": "Brave.",
+  "config.browser.custom": "The executable set in `#openHtmlInBrowser.customBrowserPath#`.",
+  "config.customBrowserPath.description": "Full path to the browser executable, used when `#openHtmlInBrowser.browser#` is `custom`. On macOS an `.app` bundle can also be given.",
+  "config.openOnDoubleClick.description": "Open HTML files in the browser when they are opened from the Explorer. When disabled, they open in the text editor as usual.",
+  "config.alsoOpenInEditor.description": "When an HTML file is opened in the browser from the Explorer, also open it in the text editor."
+}

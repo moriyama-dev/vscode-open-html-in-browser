@@ -1,0 +1,18 @@
+{
+  "Open in Browser is not supported in remote windows yet.": "Open in Browser is not supported in remote windows yet.",
+  "Open an HTML file first.": "Open an HTML file first.",
+  "Save the file before opening it in a browser.": "Save the file before opening it in a browser.",
+  "Only files on this computer can be opened in a browser.": "Only files on this computer can be opened in a browser.",
+  "Failed to start {0}: {1}": "Failed to start {0}: {1}",
+  "{0} is not available on this operating system.": "{0} is not available on this operating system.",
+  "{0} was not found. Install it, or choose another browser in the settings.": "{0} was not found. Install it, or choose another browser in the settings.",
+  "Set the browser executable in \"Custom Browser Path\".": "Set the browser executable in \"Custom Browser Path\".",
+  "The custom browser was not found: {0}": "The custom browser was not found: {0}",
+  "Failed to open the browser: {0}": "Failed to open the browser: {0}",
+  "Could not detect the default browser, so the file was handed to the operating system. Choose a browser in the settings to make this reliable.": "Could not detect the default browser, so the file was handed to the operating system. Choose a browser in the settings to make this reliable.",
+  "Open Settings": "Open Settings",
+  "A single click on an HTML file in the Explorer also opens the browser. Switch the Explorer to open files with a double-click?": "A single click on an HTML file in the Explorer also opens the browser. Switch the Explorer to open files with a double-click?",
+  "Change": "Change",
+  "Not Now": "Not Now",
+  "Don't Show Again": "Don't Show Again"
+}

@@ -1,0 +1,18 @@
+{
+  "Open in Browser is not supported in remote windows yet.": "リモート接続中のウィンドウでは「ブラウザーで開く」はまだ使えません。",
+  "Open an HTML file first.": "先に HTML ファイルを開いてください。",
+  "Save the file before opening it in a browser.": "ブラウザーで開く前にファイルを保存してください。",
+  "Only files on this computer can be opened in a browser.": "ブラウザーで開けるのは、このコンピューター上のファイルだけです。",
+  "Failed to start {0}: {1}": "{0} を起動できませんでした: {1}",
+  "{0} is not available on this operating system.": "{0} はこの OS では使えません。",
+  "{0} was not found. Install it, or choose another browser in the settings.": "{0} が見つかりません。インストールするか、設定で別のブラウザーを選んでください。",
+  "Set the browser executable in \"Custom Browser Path\".": "「Custom Browser Path」にブラウザーの実行ファイルを指定してください。",
+  "The custom browser was not found: {0}": "指定されたブラウザーが見つかりません: {0}",
+  "Failed to open the browser: {0}": "ブラウザーを開けませんでした: {0}",
+  "Could not detect the default browser, so the file was handed to the operating system. Choose a browser in the settings to make this reliable.": "既定のブラウザーを判定できなかったため、ファイルを OS に渡して開きました。確実に開くには、設定でブラウザーを指定してください。",
+  "Open Settings": "設定を開く",
+  "A single click on an HTML file in the Explorer also opens the browser. Switch the Explorer to open files with a double-click?": "このままではエクスプローラーで HTML ファイルをシングルクリックしただけでもブラウザーが開きます。ダブルクリックで開く設定に変更しますか？",
+  "Change": "変更する",
+  "Not Now": "今はしない",
+  "Don't Show Again": "今後表示しない"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "HTML ファイルをエクスプローラー、エディター、ダブルクリックから既定のブラウザーで開きます。macOS / Windows / Linux の既定のブラウザーを自動で判定します。",
+  "command.open.title": "ブラウザーで開く",
+  "customEditor.displayName": "ブラウザーで開く",
+  "config.title": "Open HTML in Browser",
+  "config.browser.description": "HTML ファイルを開くブラウザー。`default` は OS の既定のブラウザーを自動で判定します。",
+  "config.browser.default": "OS の既定のブラウザー（自動判定）。",
+  "config.browser.chrome": "Google Chrome。Linux で Chrome が無い場合は Chromium を使います。",
+  "config.browser.firefox": "Mozilla Firefox。",
+  "config.browser.edge": "Microsoft Edge。",
+  "config.browser.safari": "Safari（macOS のみ）。",
+  "config.browser.brave": "Brave。",
+  "config.browser.custom": "`#openHtmlInBrowser.customBrowserPath#` で指定した実行ファイル。",
+  "config.customBrowserPath.description": "`#openHtmlInBrowser.browser#` が `custom` のときに使うブラウザー実行ファイルのフルパス。macOS では `.app` も指定できます。",
+  "config.openOnDoubleClick.description": "エクスプローラーから開いた HTML ファイルをブラウザーで開きます。無効にすると通常どおりテキストエディターで開きます。",
+  "config.alsoOpenInEditor.description": "エクスプローラーから HTML ファイルをブラウザーで開くとき、テキストエディターでも開きます。"
+}
