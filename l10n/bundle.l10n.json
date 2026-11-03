@@ -10,9 +10,5 @@
   "The custom browser was not found: {0}": "The custom browser was not found: {0}",
   "Failed to open the browser: {0}": "Failed to open the browser: {0}",
   "Could not detect the default browser, so the file was handed to the operating system. Choose a browser in the settings to make this reliable.": "Could not detect the default browser, so the file was handed to the operating system. Choose a browser in the settings to make this reliable.",
-  "Open Settings": "Open Settings",
-  "A single click on an HTML file in the Explorer also opens the browser. Switch the Explorer to open files with a double-click?": "A single click on an HTML file in the Explorer also opens the browser. Switch the Explorer to open files with a double-click?",
-  "Change": "Change",
-  "Not Now": "Not Now",
-  "Don't Show Again": "Don't Show Again"
+  "Open Settings": "Open Settings"
 }

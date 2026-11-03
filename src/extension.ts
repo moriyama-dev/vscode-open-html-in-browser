@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import { BrowserLauncher } from './browser-launcher';
 import { CONFIG_SECTION } from './config';
 import { createNodeSystem } from './core/system';
-import { maybeSuggestDoubleClick } from './double-click-prompt';
 import { LAUNCHER_VIEW_TYPE, LauncherEditorProvider } from './launcher-editor';
 import { registerOpenCommand } from './open-command';
 
@@ -23,8 +22,6 @@ export function activate(context: vscode.ExtensionContext): void {
       }
     }),
   );
-
-  void maybeSuggestDoubleClick(context);
 }
 
 export function deactivate(): void {}

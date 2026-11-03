@@ -16,7 +16,7 @@ export function openOnDoubleClick(): boolean {
 }
 
 export function alsoOpenInEditor(): boolean {
-  return vscode.workspace.getConfiguration(CONFIG_SECTION).get<boolean>('alsoOpenInEditor', true);
+  return vscode.workspace.getConfiguration(CONFIG_SECTION).get<boolean>('alsoOpenInEditor', false);
 }
 
 export function isRemoteWindow(): boolean {
@@ -24,5 +24,5 @@ export function isRemoteWindow(): boolean {
 }
 
 export async function openExtensionSettings(): Promise<void> {
-  await vscode.commands.executeCommand('workbench.action.openSettings', `@ext:takumi.open-html-in-browser`);
+  await vscode.commands.executeCommand('workbench.action.openSettings', `@ext:moriyama-dev.open-html-in-browser`);
 }

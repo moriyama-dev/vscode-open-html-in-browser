@@ -22,6 +22,15 @@ export default tseslint.config(
   {
     files: ['**/*.mjs'],
     extends: [tseslint.configs.disableTypeChecked],
-    languageOptions: { globals: { process: 'readonly', console: 'readonly' } },
+    languageOptions: {
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        setTimeout: 'readonly',
+        fetch: 'readonly',
+        WebSocket: 'readonly',
+        Buffer: 'readonly',
+      },
+    },
   },
 );

@@ -12,6 +12,6 @@
   "config.browser.brave": "Brave。",
   "config.browser.custom": "`#openHtmlInBrowser.customBrowserPath#` で指定した実行ファイル。",
   "config.customBrowserPath.description": "`#openHtmlInBrowser.browser#` が `custom` のときに使うブラウザー実行ファイルのフルパス。macOS では `.app` も指定できます。",
-  "config.openOnDoubleClick.description": "エクスプローラーから開いた HTML ファイルをブラウザーで開きます。無効にすると通常どおりテキストエディターで開きます。",
-  "config.alsoOpenInEditor.description": "エクスプローラーから HTML ファイルをブラウザーで開くとき、テキストエディターでも開きます。"
+  "config.openOnDoubleClick.description": "エクスプローラーで HTML ファイルをダブルクリックしたときにブラウザーで開きます。シングルクリックでは通常どおりテキストエディターで開きます。",
+  "config.alsoOpenInEditor.description": "エクスプローラーで HTML ファイルをダブルクリックしたとき、ブラウザーに加えてテキストエディターでも開きます。"
 }

@@ -3,7 +3,7 @@
   "displayName": "Open HTML in Browser",
   "description": "%description%",
   "version": "0.1.0",
-  "publisher": "takumi",
+  "publisher": "moriyama-dev",
   "license": "MIT",
   "author": {
     "name": "Yoshiro Moriyama"
@@ -130,7 +130,7 @@
         },
         "openHtmlInBrowser.alsoOpenInEditor": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "markdownDescription": "%config.alsoOpenInEditor.description%"
         }
       }
