@@ -13,6 +13,14 @@
     "color": "#1747b8",
     "theme": "dark"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moriyama-dev/vscode-open-html-in-browser.git"
+  },
+  "homepage": "https://github.com/moriyama-dev/vscode-open-html-in-browser#readme",
+  "bugs": {
+    "url": "https://github.com/moriyama-dev/vscode-open-html-in-browser/issues"
+  },
   "engines": {
     "vscode": "^1.144.0"
   },
