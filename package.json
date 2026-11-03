@@ -8,6 +8,11 @@
   "author": {
     "name": "Yoshiro Moriyama"
   },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#1747b8",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.144.0"
   },
