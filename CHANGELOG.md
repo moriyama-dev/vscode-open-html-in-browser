@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 - 2026-11-03
+
+- New extension icon that reads at a glance in the Marketplace and in the Extensions view.
+
 ## 0.1.0 - 2026-11-02
 
 Initial release.

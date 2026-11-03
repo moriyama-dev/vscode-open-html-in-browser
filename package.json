@@ -2,7 +2,7 @@
   "name": "vscode-open-html-in-browser",
   "displayName": "Open HTML in Browser",
   "description": "%description%",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "moriyama-dev",
   "license": "MIT",
   "author": {
