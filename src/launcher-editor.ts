@@ -1,7 +1,7 @@
 import { randomBytes } from 'node:crypto';
 import * as vscode from 'vscode';
-import type { BrowserLauncher } from './browser-launcher';
-import { alsoOpenInEditor, isRemoteWindow, openOnDoubleClick } from './config';
+import { alsoOpenInEditor, openOnDoubleClick } from './config';
+import type { HtmlOpener } from './html-opener';
 
 export const LAUNCHER_VIEW_TYPE = 'openHtmlInBrowser.launcher';
 
@@ -22,7 +22,7 @@ type AttachOutcome = 'ready' | 'disposed' | 'timeout';
  * so it cannot trigger itself again.
  */
 export class LauncherEditorProvider implements vscode.CustomReadonlyEditorProvider {
-  constructor(private readonly launcher: BrowserLauncher) {}
+  constructor(private readonly opener: HtmlOpener) {}
 
   openCustomDocument(uri: vscode.Uri): vscode.CustomDocument {
     return { uri, dispose: () => undefined };
@@ -31,10 +31,10 @@ export class LauncherEditorProvider implements vscode.CustomReadonlyEditorProvid
   resolveCustomEditor(document: vscode.CustomDocument, panel: vscode.WebviewPanel): void {
     const uri = document.uri;
     // Non-file schemes (git:, the left side of a diff, ...) only get the text editor.
-    const canLaunch = uri.scheme === 'file' && !isRemoteWindow() && openOnDoubleClick();
+    const canLaunch = uri.scheme === 'file' && openOnDoubleClick();
     let launching: Promise<void> | undefined;
     if (canLaunch && isPinned(uri)) {
-      launching = this.launcher.open(uri);
+      launching = this.opener.open(uri);
     }
 
     // Closing or replacing the tab before VS Code has finished attaching the
@@ -54,7 +54,7 @@ export class LauncherEditorProvider implements vscode.CustomReadonlyEditorProvid
       // the first click is still loading, so the decision is made again here.
       const pinned = isPinned(uri);
       if (canLaunch && pinned && !launching) {
-        launching = this.launcher.open(uri);
+        launching = this.opener.open(uri);
       }
       try {
         if (!launching) {

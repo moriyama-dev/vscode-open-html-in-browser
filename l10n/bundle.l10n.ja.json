@@ -1,8 +1,7 @@
 {
-  "Open in Browser is not supported in remote windows yet.": "リモート接続中のウィンドウでは「ブラウザーで開く」はまだ使えません。",
   "Open an HTML file first.": "先に HTML ファイルを開いてください。",
   "Save the file before opening it in a browser.": "ブラウザーで開く前にファイルを保存してください。",
-  "Only files on this computer can be opened in a browser.": "ブラウザーで開けるのは、このコンピューター上のファイルだけです。",
+  "Only files saved on disk can be opened in a browser.": "ディスクに保存されたファイルだけをブラウザーで開けます。",
   "Failed to start {0}: {1}": "{0} を起動できませんでした: {1}",
   "{0} is not available on this operating system.": "{0} はこの OS では使えません。",
   "{0} was not found. Install it, or choose another browser in the settings.": "{0} が見つかりません。インストールするか、設定で別のブラウザーを選んでください。",

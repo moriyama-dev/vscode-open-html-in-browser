@@ -24,5 +24,8 @@ export function isRemoteWindow(): boolean {
 }
 
 export async function openExtensionSettings(): Promise<void> {
-  await vscode.commands.executeCommand('workbench.action.openSettings', `@ext:moriyama-dev.vscode-open-html-in-browser`);
+  await vscode.commands.executeCommand(
+    'workbench.action.openSettings',
+    `@ext:moriyama-dev.vscode-open-html-in-browser`,
+  );
 }

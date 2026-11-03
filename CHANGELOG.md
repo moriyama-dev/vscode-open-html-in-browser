@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 - 2026-11-03
+
+- Open HTML files in your browser from Remote - SSH, WSL, Dev Containers and Codespaces windows. The file is served from the remote machine and reached through a forwarded port, so relative links to CSS, scripts and images keep working.
+
 ## 0.1.1 - 2026-11-03
 
 - New extension icon that reads at a glance in the Marketplace and in the Extensions view.

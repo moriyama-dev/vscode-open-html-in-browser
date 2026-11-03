@@ -52,10 +52,17 @@ Files that are not on disk, such as the old version shown in a Git diff, always 
 
 To stop opening the browser this way, set `openHtmlInBrowser.openOnDoubleClick` to `false`. The command, the menus and the shortcut keep working.
 
+## Remote windows
+
+In Remote - SSH, WSL, Dev Containers and GitHub Codespaces windows, the HTML file is on the remote machine but the browser is on your computer. There the extension serves the file over HTTP from the remote machine, VS Code forwards the port to your computer, and the page opens in your default browser. The command, the menus, the shortcut and the double-click all work the same way.
+
+- The whole workspace folder is served, so links to CSS, scripts and images work, including ones in parent folders of the page. A file outside the workspace is served from its own folder.
+- The server listens on the remote machine's loopback interface only, and every address contains a random token, so other users on the machine cannot read your files through it. Paths that leave the folder, also through symbolic links, are refused, and folders are never listed.
+- The server stops when the VS Code window is closed.
+- The `browser` and `customBrowserPath` settings do not apply in remote windows: the page opens in the default browser of your computer.
+
 ## Known limitations
 
-- **Remote windows are not supported yet.** In Remote - SSH, WSL, Dev Containers and similar windows, the extension runs on the remote machine, where it cannot start the browser on your computer. The command shows a message, and opening a file from the Explorer opens it in the text editor only.
-  A future version could serve the file from a small HTTP server inside the extension and pass its address through `vscode.env.asExternalUri`, which forwards the port so the browser on your computer can load the page.
 - **Snap Firefox on Ubuntu** cannot read files inside hidden folders (for example `~/.config` or `~/.cache`) because of Snap confinement. Move the file, or use a Firefox installed from Mozilla's APT repository.
 - Single and double clicks are told apart by preview tabs. If preview tabs are turned off (`"workbench.editor.enablePreview": false`), every click opens a regular tab, so a single click also starts the browser.
 - Because the extension is the default editor for HTML files, opening an HTML file in a regular tab in other ways, such as from Quick Open, also starts the browser. Use **Reopen Editor With... › Text Editor** or disable `openOnDoubleClick` if that gets in the way.

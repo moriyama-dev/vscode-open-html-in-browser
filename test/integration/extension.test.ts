@@ -1,8 +1,10 @@
 import * as assert from 'node:assert/strict';
 import * as fs from 'node:fs';
+import * as http from 'node:http';
 import * as os from 'node:os';
 import * as path from 'node:path';
 import * as vscode from 'vscode';
+import { RemoteOpener } from '../../src/remote-opener';
 
 const EXTENSION_ID = 'moriyama-dev.vscode-open-html-in-browser';
 const VIEW_TYPE = 'openHtmlInBrowser.launcher';
@@ -19,6 +21,19 @@ async function waitFor(condition: () => boolean, timeoutMs = 5000): Promise<void
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function httpGet(url: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    http
+      .get(url, { agent: false }, (res) => {
+        let body = '';
+        res.setEncoding('utf8');
+        res.on('data', (chunk: string) => (body += chunk));
+        res.on('end', () => (res.statusCode === 200 ? resolve(body) : reject(new Error(`HTTP ${res.statusCode}`))));
+      })
+      .on('error', reject);
+  });
 }
 
 function allTabs(): vscode.Tab[] {
@@ -166,5 +181,54 @@ describe('Open HTML in Browser', () => {
     await vscode.commands.executeCommand('openHtmlInBrowser.open', fixture);
     await waitFor(() => launches().length > 0);
     assert.deepEqual(launches(), [fixture.fsPath]);
+  });
+
+  describe('in remote windows', () => {
+    const log = vscode.window.createOutputChannel('Open HTML in Browser (test)', { log: true });
+    let opened: vscode.Uri[];
+    let remote: RemoteOpener;
+
+    beforeEach(() => {
+      opened = [];
+      remote = new RemoteOpener(log, (uri) => {
+        opened.push(uri);
+        return Promise.resolve(true);
+      });
+    });
+
+    afterEach(() => remote.dispose());
+
+    it('opens the file through a local HTTP URL that serves it', async () => {
+      await remote.open(fixture);
+
+      assert.equal(opened.length, 1);
+      const url = opened[0].toString(true);
+      assert.match(url, /^http:\/\/(127\.0\.0\.1|localhost):\d+\//);
+      assert.equal(await httpGet(url), fs.readFileSync(fixture.fsPath, 'utf8'));
+    });
+
+    it('reuses one server for files in the same folder', async () => {
+      const first = new URL(await remote.urlFor(fixture));
+      const second = new URL(await remote.urlFor(fixture));
+      assert.equal(first.port, second.port);
+    });
+
+    it("serves a file outside the workspace from the file's own folder", async () => {
+      const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'open-html-in-browser-outside-'));
+      const page = path.join(dir, 'page.html');
+      fs.writeFileSync(page, '<p>outside</p>');
+      fs.writeFileSync(path.join(dir, 'style.css'), 'p{}');
+
+      const url = await remote.urlFor(vscode.Uri.file(page));
+      assert.equal(await httpGet(url), '<p>outside</p>');
+      assert.equal(await httpGet(new URL('style.css', url).toString()), 'p{}');
+    });
+
+    it('stops serving once disposed', async () => {
+      const url = await remote.urlFor(fixture);
+      remote.dispose();
+      await sleep(200);
+      await assert.rejects(httpGet(url));
+    });
   });
 });
