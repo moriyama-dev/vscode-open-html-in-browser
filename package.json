@@ -1,5 +1,5 @@
 {
-  "name": "open-html-in-browser",
+  "name": "vscode-open-html-in-browser",
   "displayName": "Open HTML in Browser",
   "description": "%description%",
   "version": "0.1.0",

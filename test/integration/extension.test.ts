@@ -4,7 +4,7 @@ import * as os from 'node:os';
 import * as path from 'node:path';
 import * as vscode from 'vscode';
 
-const EXTENSION_ID = 'moriyama-dev.open-html-in-browser';
+const EXTENSION_ID = 'moriyama-dev.vscode-open-html-in-browser';
 const VIEW_TYPE = 'openHtmlInBrowser.launcher';
 
 async function waitFor(condition: () => boolean, timeoutMs = 5000): Promise<void> {
@@ -68,6 +68,10 @@ describe('Open HTML in Browser', () => {
     await config().update('browser', undefined, vscode.ConfigurationTarget.Global);
     await config().update('customBrowserPath', undefined, vscode.ConfigurationTarget.Global);
     await vscode.commands.executeCommand('workbench.action.closeAllEditors');
+  });
+
+  it('is installed under the published extension ID', () => {
+    assert.ok(vscode.extensions.getExtension(EXTENSION_ID));
   });
 
   it('registers the open command', async () => {
