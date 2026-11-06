@@ -5,3 +5,4 @@ release/
 *.vsix
 .vscode-test/
 .env
+.vscode-test.local.mjs
