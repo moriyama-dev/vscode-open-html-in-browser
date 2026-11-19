@@ -1,8 +1,12 @@
 # Open HTML in Browser
 
+English | [日本語](README.ja.md)
+
 Open HTML files in a web browser straight from VS Code: from the Explorer, from the editor, with a keyboard shortcut, or by double-clicking the file.
 
 The extension finds out which browser is your default and starts that browser with the file. It does not hand the file to the operating system's file association, because `.html` is often associated with a text editor or with VS Code itself, and the file would end up opening there instead of in a browser.
+
+Found a problem or have an idea? [Open an issue on GitHub](https://github.com/moriyama-dev/vscode-open-html-in-browser/issues).
 
 ## Install
 
@@ -23,28 +27,20 @@ code --install-extension moriyama-dev.vscode-open-html-in-browser
 
 ### VSCodium
 
-The extension is not on Open VSX yet, so install the `.vsix` file from GitHub Releases. Once it is on Open VSX, VSCodium will find it in the Extensions view and update it automatically like any other extension.
+1. Open the Extensions view, with the same shortcut as in VS Code.
+2. Search for **Open HTML in Browser** and click **Install**.
 
-**The easy way (all operating systems):**
-
-1. Download `vscode-open-html-in-browser-<version>.vsix` from the [latest release](https://github.com/moriyama-dev/vscode-open-html-in-browser/releases/latest).
-2. In VSCodium, open the Extensions view, click the **...** menu at the top and choose **Install from VSIX...**, then pick the downloaded file.
-
-**Install or update with one command.** Run the same command again whenever a new version is released; it always fetches the latest one.
-
-macOS and Ubuntu (Terminal):
+VSCodium gets the extension from [Open VSX](https://open-vsx.org/extension/moriyama-dev/vscode-open-html-in-browser). You can also install it from a terminal:
 
 ```sh
-url=$(curl -fsSL https://api.github.com/repos/moriyama-dev/vscode-open-html-in-browser/releases/latest | grep -o 'https://[^"]*\.vsix' | head -n 1) && curl -fsSL -o /tmp/vscode-open-html-in-browser.vsix "$url" && codium --install-extension /tmp/vscode-open-html-in-browser.vsix --force
+codium --install-extension moriyama-dev.vscode-open-html-in-browser
 ```
 
-Windows (PowerShell):
+**Updates are automatic** here too: VSCodium installs new versions from Open VSX by itself.
 
-```powershell
-$u = (Invoke-RestMethod https://api.github.com/repos/moriyama-dev/vscode-open-html-in-browser/releases/latest).assets | Where-Object name -like '*.vsix' | Select-Object -First 1 -ExpandProperty browser_download_url; Invoke-WebRequest $u -OutFile "$env:TEMP\vscode-open-html-in-browser.vsix"; codium --install-extension "$env:TEMP\vscode-open-html-in-browser.vsix" --force
-```
+### From a `.vsix` file
 
-To hear about new versions, click **Watch → Custom → Releases** on the [GitHub repository](https://github.com/moriyama-dev/vscode-open-html-in-browser).
+Every release also has a `.vsix` file on [GitHub Releases](https://github.com/moriyama-dev/vscode-open-html-in-browser/releases/latest), for editors that use neither the Marketplace nor Open VSX. In the Extensions view, click the **...** menu at the top, choose **Install from VSIX...** and pick the downloaded file. A copy installed this way does not update itself, so install the newer file when a new version is released.
 
 ### If `code` or `codium` is not found
 

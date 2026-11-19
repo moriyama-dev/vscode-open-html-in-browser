@@ -1,8 +1,8 @@
 name: Publish
 
 # A version tag (v0.1.0, ...) builds, tests and publishes that version to the
-# Visual Studio Marketplace through Trusted Publishing, then attaches the
-# .vsix to a GitHub release. Running the workflow by hand does everything
+# Visual Studio Marketplace through Trusted Publishing and to Open VSX, then
+# attaches the .vsix to a GitHub release. Running the workflow by hand does everything
 # except publishing, so the pipeline can be checked without releasing.
 on:
   push:
@@ -59,7 +59,14 @@ jobs:
 
       - name: Publish to the Visual Studio Marketplace
         if: startsWith(github.ref, 'refs/tags/')
-        run: npx vsce publish --oidc --packagePath release/*.vsix
+        run: npx vsce publish --oidc --skip-duplicate --packagePath release/*.vsix
+
+      # --skip-duplicate on both lets a failed run be retried after the other registry already has the version.
+      - name: Publish to Open VSX
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: npx --yes ovsx@1.3.0 publish --skip-duplicate --packagePath "release/vscode-open-html-in-browser-${GITHUB_REF_NAME#v}.vsix"
 
       - name: Create the GitHub release
         if: startsWith(github.ref, 'refs/tags/')

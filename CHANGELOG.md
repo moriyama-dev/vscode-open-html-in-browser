@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.2 - 2026-11-18
+
+- The extension is on [Open VSX](https://open-vsx.org/extension/moriyama-dev/vscode-open-html-in-browser), so VSCodium installs and updates it from its Extensions view.
+- The README is also available in Japanese (README.ja.md) and links to GitHub Issues for bug reports and requests.
+
 ## 0.2.1 - 2026-11-06
 
 - Install in VSCodium and in VS Code 1.143. The extension needed VS Code 1.144 before, which VSCodium has not reached yet.
